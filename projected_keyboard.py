@@ -8,17 +8,20 @@ def get_keyboard(width_keyboard , height_keyboard, offset_keyboard):
     draw a keyboard qwerty 10 x 5
 
     offset_keyboard = (int, int) is the spatial offset on x, y of the keyboard
+    offset_keyboard used for balancing and fixing the keyboard to correct position
     """
     column = np.arange(0, width_keyboard, width_keyboard/ 10, dtype=int) + offset_keyboard[0]
+    #np.arrange(start,stop,space between values,datatypr)
     row = np.arange(0, height_keyboard, height_keyboard/ 5, dtype=int) + offset_keyboard[1]
 
     box = int(width_keyboard / 10)
 
     color_board = (250, 0, 100)
-
     key_points = []
+    # key_points.append([value, position of value in box,position of box in screen)
                     # key   center               upper-left                      bottom-right
     key_points.append(['1', (column[0], row[0]), (column[0]-box/2, row[0]-box/2), (column[0]+box/2, row[0]+box/2)])
+    #key_points.append(['1', (column[0], row[0]), (column[0]-box/4, row[0]-box/4), (column[0]+box/4, row[0]+box/4)])
     key_points.append(['2', (column[1], row[0]), (column[1]-box/2, row[0]-box/2), (column[1]+box/2, row[0]+box/2)])
     key_points.append(['3', (column[2], row[0]), (column[2]-box/2, row[0]-box/2), (column[2]+box/2, row[0]+box/2)])
     key_points.append(['4', (column[3], row[0]), (column[3]-box/2, row[0]-box/2), (column[3]+box/2, row[0]+box/2)])
@@ -61,8 +64,10 @@ def get_keyboard(width_keyboard , height_keyboard, offset_keyboard):
     key_points.append(['.', (column[8], row[3]), (column[8]-box/2, row[3]-box/2), (column[8]+box/2, row[3]+box/2)])
     key_points.append(["'", (column[9], row[3]), (column[9]-box/2, row[3]-box/2), (column[9]+box/2, row[3]+box/2)])
 
-    key_points.append(['del', (column[0], row[4]), (column[0]-box/2, row[4]-box/2), (column[1]+box/2, row[4]+box/2)])
-    key_points.append([' ', (column[4], row[4]), (column[3]-box/2, row[4]-box/2), (column[6]+box/2, row[4]+box/2)])
+    key_points.append(['del', (column[0], row[4]), (column[0]-box/2, row[4]-box/2), (220, row[4]+box/3)])
+
+    key_points.append(['##', (280,480), (220,430), (350,513)])
+    key_points.append([' ', (column[4], row[4]), (column[3]-box/2, row[4]-box/2), (800, row[4]+box/2)])
     key_points.append(['?', (column[8], row[4]), (column[8]-box/2, row[4]-box/2), (column[8]+box/2, row[4]+box/2)])
     key_points.append(['!', (column[9], row[4]), (column[9]-box/2, row[4]-box/2), (column[9]+box/2, row[4]+box/2)])
 
